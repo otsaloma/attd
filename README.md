@@ -16,17 +16,18 @@ pip install attd
 ## Documentation
 
 ```python
->>> import attd
->>> data = attd.Dictionary({"a": {"b": {"c": 1}}})
+>>> from attd import AttributeDict
+>>> data = AttributeDict({"a": {"b": {"c": 1}}})
 >>> data["a"]["b"]["c"]
 1
 >>> data.a.b.c
 1
->>> data = attd.FallbackDictionary({})
+>>> from attd import FallbackAttributeDict
+>>> data = FallbackAttributeDict({})
 >>> data["a"]["b"]["c"]
-FallbackDictionary()
+FallbackAttributeDict()
 >>> data.a.b.c
-FallbackDictionary()
+FallbackAttributeDict()
 ```
 
 Check the source code for details – it's short and should be fairly

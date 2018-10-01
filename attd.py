@@ -28,7 +28,7 @@ import json
 import keyword
 import sys
 
-__all__ = ("Dictionary", "FallbackDictionary")
+__all__ = ("AttributeDict", "FallbackAttributeDict")
 
 
 def translate_error(fm, to):
@@ -43,7 +43,7 @@ def translate_error(fm, to):
     return outer_wrapper
 
 
-class Dictionary(collections.OrderedDict):
+class AttributeDict(collections.OrderedDict):
 
     """Dictionary with attribute access to keys."""
 
@@ -53,13 +53,13 @@ class Dictionary(collections.OrderedDict):
             setattr(self, key, value)
 
     def __coerce(self, value):
-        if isinstance(value, Dictionary):
+        if isinstance(value, AttributeDict):
             # Assume all children are Dictionaries as well.
-            # This allows us to do a fast Dictionary(x) to
+            # This allows us to do a fast AttributeDict(x) to
             # ensure that we have attribute access.
             return value
         if isinstance(value, dict):
-            return Dictionary(value)
+            return AttributeDict(value)
         if isinstance(value, (list, tuple, set)):
             items = map(self.__coerce, value)
             return type(value)(items)
@@ -99,7 +99,7 @@ class Dictionary(collections.OrderedDict):
         return super().setdefault(key, default)
 
     def update(self, *args, **kwargs):
-        other = Dictionary(*args, **kwargs)
+        other = AttributeDict(*args, **kwargs)
         return super().update(other)
 
     # Non-standard methods:
@@ -117,11 +117,11 @@ class Dictionary(collections.OrderedDict):
         return json.dumps(self, **kwargs)
 
 
-class FallbackDictionary(Dictionary):
+class FallbackAttributeDict(AttributeDict):
 
     """Attribute dictionary returning {} for missing keys."""
 
     def __getitem__(self, key):
         if key in self:
             return super().__getitem__(key)
-        return FallbackDictionary({})
+        return FallbackAttributeDict({})

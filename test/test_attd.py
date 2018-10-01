@@ -20,13 +20,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import attd
+from attd import AttributeDict
+from attd import FallbackAttributeDict
 
 
-class TestDictionary:
+class TestAttributeDict:
 
     def setup_method(self, method):
-        self.ad = attd.Dictionary()
+        self.ad = AttributeDict()
 
     def test___delattr__(self):
         self.ad.test = 1
@@ -84,21 +85,21 @@ class TestDictionary:
         assert self.ad.test.nested == 1
 
     def test_from_json(self):
-        test = attd.Dictionary.from_json('{"test": 1}')
-        assert isinstance(test, attd.Dictionary)
+        test = AttributeDict.from_json('{"test": 1}')
+        assert isinstance(test, AttributeDict)
         assert test == {"test": 1}
 
     def test_to_json(self):
         self.ad.test = 1
         test = self.ad.to_json()
-        test = attd.Dictionary.from_json(test)
+        test = AttributeDict.from_json(test)
         assert test == self.ad
 
 
-class TestFallbackDictionary:
+class TestFallbackAttributeDict:
 
     def setup_method(self, method):
-        self.ad = attd.FallbackDictionary()
+        self.ad = FallbackAttributeDict()
 
     def test___getattr__(self):
         assert self.ad.a.b.c == {}
