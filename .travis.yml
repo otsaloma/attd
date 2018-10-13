@@ -3,9 +3,7 @@ python:
   - 3.5
   - 3.6
 install:
-  - sudo pip install flake8 setuptools
+  - pip install flake8 setuptools
 script:
   - make check
   - make test
-  - make clean
-  - sudo make install
