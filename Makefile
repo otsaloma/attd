@@ -17,7 +17,15 @@ clean:
 install:
 	./setup.py install --prefix=$(PREFIX)
 
+push:
+	$(MAKE) clean
+	./setup.py sdist bdist_wheel
+	twine upload dist/*
+
 test:
 	py.test .
+
+test-installed:
+	python3 -c "import attd; attd.AttributeDict({})"
 
 .PHONY: check clean install test
