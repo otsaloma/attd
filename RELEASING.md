@@ -5,7 +5,7 @@ Releasing a New Version
 make check test
 emacs attd.py setup.py
 emacs NEWS.md
-make install clean
+sudo make install clean
 make test-installed
 tools/release
 make push clean

@@ -30,7 +30,7 @@ import sys
 
 __all__ = ("AttributeDict", "FallbackAttributeDict")
 
-__version__ = "0.0.1"
+__version__ = "0.1"
 
 
 def translate_error(fm, to):
