@@ -2,6 +2,7 @@ Attribute Dictionary
 ====================
 
 [![Build Status](https://travis-ci.org/otsaloma/attd.svg)](https://travis-ci.org/otsaloma/attd)
+[![PyPI](https://img.shields.io/pypi/v/attd.svg)](https://pypi.org/project/attd/)
 
 attd is a Python module that provides a dictionary with attribute access
 to keys. It is especially convenient when working with deeply nested
