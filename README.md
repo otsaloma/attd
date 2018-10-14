@@ -7,6 +7,12 @@ attd is a Python module that provides a dictionary with attribute access
 to keys. It is especially convenient when working with deeply nested
 data from JSON APIs.
 
+## Installation
+
+```bash
+pip install attd
+```
+
 ## Documentation
 
 ```python
