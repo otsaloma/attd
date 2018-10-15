@@ -10,6 +10,7 @@ make test-installed
 tools/release
 make push clean
 sudo pip3 uninstall attd
+sudo pip3 uninstall attd
 sudo pip3 install attd
 make test-installed
 ```
