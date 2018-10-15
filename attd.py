@@ -81,7 +81,7 @@ class AttributeDict(collections.OrderedDict):
         return super().__setitem__(key, value)
 
     def copy(self):
-        return self.__class__(super().copy())
+        return AttributeDict(super().copy())
 
     def setdefault(self, key, default=None):
         default = self.__coerce(default)
