@@ -25,8 +25,6 @@
 import collections
 import functools
 import json
-import keyword
-import sys
 
 __all__ = ("AttributeDict", "FallbackAttributeDict")
 
@@ -76,17 +74,6 @@ class AttributeDict(collections.OrderedDict):
         return self.__getitem__(name)
 
     def __setattr__(self, name, value):
-        if not isinstance(name, str):
-            # Fail silently for non-string keys.
-            return
-        if not name.isidentifier() or keyword.iskeyword(name):
-            # Warn if trying to set an invalid attribute name.
-            message = "Not adding attribute {!r}"
-            return print(message.format(name), file=sys.stderr)
-        if name in dir(collections.OrderedDict):
-            # Warn if trying to override standard methods.
-            message = "Not overriding attribute {!r}"
-            return print(message.format(name), file=sys.stderr)
         return self.__setitem__(name, value)
 
     def __setitem__(self, key, value):
