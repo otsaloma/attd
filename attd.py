@@ -54,7 +54,7 @@ class AttributeDict(collections.OrderedDict):
 
     def __coerce(self, value):
         if isinstance(value, AttributeDict):
-            # Assume all children are Dictionaries as well.
+            # Assume all children are AttributeDicts as well.
             # This allows us to do a fast AttributeDict(x) to
             # ensure that we have attribute access.
             return value
