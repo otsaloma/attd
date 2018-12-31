@@ -26,6 +26,6 @@ test:
 	py.test .
 
 test-installed:
-	python3 -c "import attd; attd.AttributeDict({})"
+	cd && python3 -c "import attd; attd.AttributeDict({})"
 
 .PHONY: check clean install test
