@@ -101,6 +101,13 @@ class TestFallbackAttributeDict:
     def setup_method(self, method):
         self.ad = FallbackAttributeDict()
 
+    def test___coerce(self):
+        d = {"a": {"b": {"c": 1}}}
+        ad = FallbackAttributeDict(d)
+        assert ad.a.b.c == 1
+        assert ad.a.b.d == {}
+        assert ad.a.b.d.e == {}
+
     def test___getattr__(self):
         assert self.ad.a.b.c == {}
 

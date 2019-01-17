@@ -53,13 +53,13 @@ class AttributeDict(collections.OrderedDict):
             setattr(self, key, value)
 
     def __coerce(self, value):
-        if isinstance(value, AttributeDict):
+        if isinstance(value, self.__class__):
             # Assume all children are AttributeDicts as well.
             # This allows us to do a fast AttributeDict(x) to
             # ensure that we have attribute access.
             return value
         if isinstance(value, dict):
-            return AttributeDict(value)
+            return self.__class__(value)
         if isinstance(value, (list, tuple, set)):
             items = map(self.__coerce, value)
             return type(value)(items)
@@ -81,14 +81,14 @@ class AttributeDict(collections.OrderedDict):
         return super().__setitem__(key, value)
 
     def copy(self):
-        return AttributeDict(super().copy())
+        return self.__class__(super().copy())
 
     def setdefault(self, key, default=None):
         default = self.__coerce(default)
         return super().setdefault(key, default)
 
     def update(self, *args, **kwargs):
-        other = AttributeDict(*args, **kwargs)
+        other = self.__class__(*args, **kwargs)
         return super().update(other)
 
     # Non-standard methods:
@@ -113,4 +113,4 @@ class FallbackAttributeDict(AttributeDict):
     def __getitem__(self, key):
         if key in self:
             return super().__getitem__(key)
-        return FallbackAttributeDict({})
+        return self.__class__({})
