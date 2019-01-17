@@ -1,3 +1,9 @@
+2019-01-17: attd 0.2
+====================
+
+* Fix type coercion and other operations to work on subclasses
+  of AttributeDict too, including FallbackAttributeDict
+
 2018-10-15: attd 0.1.2
 ======================
 
