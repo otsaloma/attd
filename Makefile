@@ -28,4 +28,4 @@ test:
 test-installed:
 	cd && python3 -c "import attd; attd.AttributeDict({})"
 
-.PHONY: check clean install test
+.PHONY: check clean install push test test-installed
