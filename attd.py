@@ -22,7 +22,6 @@
 
 """Dictionary with attribute access to keys."""
 
-import collections
 import functools
 import json
 
@@ -43,7 +42,7 @@ def translate_error(fm, to):
     return outer_wrapper
 
 
-class AttributeDict(collections.OrderedDict):
+class AttributeDict(dict):
 
     """Dictionary with attribute access to keys."""
 
