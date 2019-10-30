@@ -49,7 +49,8 @@ class AttributeDict(dict):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for key, value in self.items():
-            setattr(self, key, value)
+            if not isinstance(value, (dict, list, tuple, set)): continue
+            super().__setitem__(key, self.__coerce(value))
 
     def __coerce(self, value):
         if isinstance(value, self.__class__):
