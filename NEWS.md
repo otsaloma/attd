@@ -1,3 +1,9 @@
+2019-10-30: attd 0.3
+====================
+
+* Use dict as baseclass
+* Speed up initial type coercion
+
 2019-01-17: attd 0.2
 ====================
 
