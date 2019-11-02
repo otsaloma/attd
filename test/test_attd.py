@@ -20,6 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+import copy
+
 from attd import AttributeDict
 from attd import FallbackAttributeDict
 
@@ -61,10 +63,46 @@ class TestAttributeDict:
         assert self.ad.test is self.ad["test"]
 
     def test_copy(self):
-        self.ad.test = "test"
+        self.ad.a = 1
+        self.ad.b = "test"
+        self.ad.c = AttributeDict()
+        self.ad.c.d = 1
+        self.ad.c.e = "test"
         adc = self.ad.copy()
+        assert isinstance(adc, AttributeDict)
+        assert isinstance(adc.c, AttributeDict)
         assert adc == self.ad
         assert adc is not self.ad
+        assert adc.c == self.ad.c
+        assert adc.c is self.ad.c
+
+    def test_copy_copy(self):
+        self.ad.a = 1
+        self.ad.b = "test"
+        self.ad.c = AttributeDict()
+        self.ad.c.d = 1
+        self.ad.c.e = "test"
+        adc = copy.copy(self.ad)
+        assert isinstance(adc, AttributeDict)
+        assert isinstance(adc.c, AttributeDict)
+        assert adc == self.ad
+        assert adc is not self.ad
+        assert adc.c == self.ad.c
+        assert adc.c is self.ad.c
+
+    def test_deepcopy(self):
+        self.ad.a = 1
+        self.ad.b = "test"
+        self.ad.c = AttributeDict()
+        self.ad.c.d = 1
+        self.ad.c.e = "test"
+        adc = copy.deepcopy(self.ad)
+        assert isinstance(adc, AttributeDict)
+        assert isinstance(adc.c, AttributeDict)
+        assert adc == self.ad
+        assert adc is not self.ad
+        assert adc.c == self.ad.c
+        assert adc.c is not self.ad.c
 
     def test_setdefault(self):
         self.ad.setdefault("test", 1)

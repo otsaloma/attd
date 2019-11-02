@@ -22,6 +22,7 @@
 
 """Dictionary with attribute access to keys."""
 
+import copy
 import functools
 import json
 
@@ -61,9 +62,16 @@ class AttributeDict(dict):
         if isinstance(value, dict):
             return self.__class__(value)
         if isinstance(value, (list, tuple, set)):
-            items = map(self.__coerce, value)
-            return type(value)(items)
+            return type(value)(map(self.__coerce, value))
         return value
+
+    def __copy__(self):
+        return self.__class__(copy.copy(dict(self)))
+
+    def __deepcopy__(self, memo=None):
+        # deepcopying via a plain dict is a lot faster due to some
+        # dict-specific optimizations that are not in use with subclasses.
+        return self.__class__(copy.deepcopy(dict(self)))
 
     @translate_error(KeyError, AttributeError)
     def __delattr__(self, name):
