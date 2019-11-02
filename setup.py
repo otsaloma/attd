@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name="attd",
-    version="0.3",
+    version="0.4",
     author="Osmo Salomaa",
     author_email="otsaloma@iki.fi",
     description="Dictionary with attribute access to keys",
