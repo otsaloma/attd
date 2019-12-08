@@ -24,9 +24,9 @@ pip install attd
 >>> data.a.b.c
 1
 >>> from attd import FallbackAttributeDict
->>> data = FallbackAttributeDict({})
+>>> data = FallbackAttributeDict()
 >>> data["a"]["b"]["c"]
-FallbackAttributeDict()
+{}
 >>> data.a.b.c
-FallbackAttributeDict()
+{}
 ```
