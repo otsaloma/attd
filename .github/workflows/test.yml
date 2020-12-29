@@ -15,7 +15,7 @@ jobs:
       - name: Check Python version
         run: python -c "import sys; print(sys.version)"
       - name: Install dependencies
-        run: pip install -U flake8 setuptools
+        run: pip install -U flake8 pytest setuptools
       - name: Run linter
         run: make check
       - name: Run unit tests
