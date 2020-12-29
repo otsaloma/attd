@@ -1,7 +1,7 @@
 Attribute Dictionary
 ====================
 
-[![Build Status](https://github.com/otsaloma/attd/.github/workflows/test.yml/badge.svg)](https://github.com/otsaloma/attd/actions)
+[![Test](https://github.com/otsaloma/attd/workflows/Test/badge.svg)](https://github.com/otsaloma/attd/actions)
 [![PyPI](https://img.shields.io/pypi/v/attd.svg)](https://pypi.org/project/attd/)
 
 attd is a Python package that provides a dictionary with attribute
