@@ -1,7 +1,7 @@
 Attribute Dictionary
 ====================
 
-[![Build Status](https://travis-ci.org/otsaloma/attd.svg)](https://travis-ci.org/otsaloma/attd)
+[![Build Status](https://github.com/otsaloma/attd/.github/workflows/test.yml/badge.svg)](https://github.com/otsaloma/attd/actions)
 [![PyPI](https://img.shields.io/pypi/v/attd.svg)](https://pypi.org/project/attd/)
 
 attd is a Python package that provides a dictionary with attribute
@@ -11,7 +11,11 @@ nested data from JSON APIs.
 ## Installation
 
 ```bash
-pip install attd
+# Latest stable version
+pip install -U attd
+
+# Latest development version
+pip install -U git+https://github.com/otsaloma/attd#egg=attd
 ```
 
 ## Documentation
