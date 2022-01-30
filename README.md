@@ -3,6 +3,7 @@ Attribute Dictionary
 
 [![Test](https://github.com/otsaloma/attd/workflows/Test/badge.svg)](https://github.com/otsaloma/attd/actions)
 [![PyPI](https://img.shields.io/pypi/v/attd.svg)](https://pypi.org/project/attd/)
+[![Downloads](https://pepy.tech/badge/attd/month)](https://pepy.tech/project/attd)
 
 attd is a Python package that provides a dictionary with attribute
 access to keys. It is especially convenient when working with deeply
