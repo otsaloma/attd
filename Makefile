@@ -49,6 +49,6 @@ test:
 	py.test .
 
 test-installed:
-	cd && python3 -c "import attd; attd.AttributeDict({})"
+	cd && python3 -c "import attd; attd.AttributeDict()"
 
 .PHONY: check clean install publish release test test-installed
