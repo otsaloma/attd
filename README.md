@@ -16,7 +16,7 @@ nested data from JSON APIs.
 pip install -U attd
 
 # Latest development version
-pip install -U git+https://github.com/otsaloma/attd#egg=attd
+pip install -U git+https://github.com/otsaloma/attd
 ```
 
 ## Documentation
