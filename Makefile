@@ -2,7 +2,6 @@
 
 # EDITOR must wait!
 EDITOR = nano
-PREFIX = /usr/local
 
 check:
 	flake8 .
@@ -17,7 +16,7 @@ clean:
 	rm -rf */.pytest_cache
 
 install:
-	./setup.py install --prefix=$(PREFIX)
+	pip3 install .
 
 # Interactive!
 publish:
