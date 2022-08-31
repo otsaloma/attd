@@ -21,7 +21,7 @@ install:
 # Interactive!
 publish:
 	$(MAKE) check test clean
-	./setup.py sdist bdist_wheel
+	python3 -m build
 	test -s dist/attd-*-py3-none-any.whl
 	test -s dist/attd-*.tar.gz
 	ls -l dist
