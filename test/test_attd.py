@@ -48,11 +48,11 @@ class TestAttributeDict:
         assert self.ad.test == 1
         assert self.ad.test is self.ad["test"]
 
-    def test___setattr____conflict(self):
+    def test___setattr___conflict(self):
         self.ad.items = []
         assert callable(self.ad.items)
 
-    def test___setattr____nested(self):
+    def test___setattr___nested(self):
         self.ad.test = {"test": {"nested": 1}}
         assert self.ad.test.test.nested == 1
 
@@ -108,7 +108,7 @@ class TestAttributeDict:
         assert self.ad["test"] == 1
         assert self.ad.test is self.ad["test"]
 
-    def test_setdefault__nested(self):
+    def test_setdefault_nested(self):
         self.ad.test = {"test": {"nested": 1}}
         assert self.ad.test.test.nested == 1
 
@@ -117,7 +117,7 @@ class TestAttributeDict:
         assert self.ad["test"] == 1
         assert self.ad.test is self.ad["test"]
 
-    def test_update__nested(self):
+    def test_update_nested(self):
         self.ad.update({"test": {"nested": 1}})
         assert self.ad.test.nested == 1
 
