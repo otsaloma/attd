@@ -25,7 +25,6 @@ import copy
 from attd import AttributeDict
 from attd import FallbackAttributeDict
 
-
 class TestAttributeDict:
 
     def setup_method(self, method):
@@ -132,7 +131,6 @@ class TestAttributeDict:
         test = self.ad.to_json()
         test = AttributeDict.from_json(test)
         assert test == self.ad
-
 
 class TestFallbackAttributeDict:
 

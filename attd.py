@@ -30,7 +30,6 @@ __all__ = ("AttributeDict", "FallbackAttributeDict")
 
 __version__ = "0.4"
 
-
 def translate_error(fm, to):
     def outer_wrapper(function):
         @functools.wraps(function)
@@ -41,7 +40,6 @@ def translate_error(fm, to):
                 raise to(str(error))
         return inner_wrapper
     return outer_wrapper
-
 
 class AttributeDict(dict):
 
@@ -112,7 +110,6 @@ class AttributeDict(dict):
         kwargs.setdefault("ensure_ascii", False)
         kwargs.setdefault("indent", 2)
         return json.dumps(self, **kwargs)
-
 
 class FallbackAttributeDict(AttributeDict):
 
