@@ -1,3 +1,8 @@
+PENDING: attd 1.0
+=================
+
+* Migrate from `setup.py` to `hatch` and `pyproject.toml`
+
 2019-11-02: attd 0.4
 ====================
 
