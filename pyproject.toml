@@ -9,9 +9,7 @@ description = "Dictionary with attribute access to keys"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.1.0"
-authors = [
-    { name = "Osmo Salomaa", email = "otsaloma@iki.fi" },
-]
+authors = [{ name = "Osmo Salomaa", email = "otsaloma@iki.fi" }]
 
 [project.urls]
 Homepage = "https://github.com/otsaloma/attd"
