@@ -28,7 +28,7 @@ import json
 
 __all__ = ("AttributeDict", "FallbackAttributeDict")
 
-__version__ = "0.4"
+__version__ = "1.0"
 
 def translate_error(fm, to):
     def outer_wrapper(function):

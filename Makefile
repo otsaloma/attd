@@ -37,7 +37,6 @@ release:
 	$(MAKE) check test clean
 	@echo "BUMP VERSION NUMBERS"
 	$(EDITOR) attd.py
-	$(EDITOR) setup.py
 	@echo "ADD RELEASE NOTES"
 	$(EDITOR) NEWS.md
 	sudo $(MAKE) install clean
