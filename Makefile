@@ -16,20 +16,20 @@ clean:
 	rm -rf */.pytest_cache
 
 install:
-	pip3 install .
+	pip3 install --break-system-packages .
 
 # Interactive!
 publish:
-	$(MAKE) check test clean
+	$(MAKE) clean
 	python3 -m build
 	test -s dist/attd-*-py3-none-any.whl
 	test -s dist/attd-*.tar.gz
 	ls -l dist
 	@printf "Press Enter to upload or Ctrl+C to abort: "; read _
 	twine upload dist/*
-	sudo pip3 uninstall attd || true
-	sudo pip3 uninstall attd || true
-	sudo pip3 install attd
+	sudo pip3 uninstall --break-system-packages -y attd || true
+	sudo pip3 uninstall --break-system-packages -y attd || true
+	sudo pip3 install   --break-system-packages -U attd
 	$(MAKE) test-installed
 
 # Interactive!
