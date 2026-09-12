@@ -115,7 +115,5 @@ class FallbackAttributeDict(AttributeDict):
 
     """Attribute dictionary returning {} for missing keys."""
 
-    def __getitem__(self, key):
-        if key in self:
-            return super().__getitem__(key)
-        return self.__class__({})
+    def __missing__(self, key):
+        return self.__class__()
