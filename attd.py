@@ -23,23 +23,11 @@
 """Dictionary with attribute access to keys."""
 
 import copy
-import functools
 import json
 
 __all__ = ("AttributeDict", "FallbackAttributeDict")
 
 __version__ = "1.0"
-
-def translate_error(fm, to):
-    def outer_wrapper(function):
-        @functools.wraps(function)
-        def inner_wrapper(*args, **kwargs):
-            try:
-                return function(*args, **kwargs)
-            except fm as error:
-                raise to(str(error))
-        return inner_wrapper
-    return outer_wrapper
 
 class AttributeDict(dict):
 
@@ -71,13 +59,17 @@ class AttributeDict(dict):
         # dict-specific optimizations that are not in use with subclasses.
         return self.__class__(copy.deepcopy(dict(self)))
 
-    @translate_error(KeyError, AttributeError)
     def __delattr__(self, name):
-        return self.__delitem__(name)
+        try:
+            return self.__delitem__(name)
+        except KeyError as error:
+            raise AttributeError(str(error))
 
-    @translate_error(KeyError, AttributeError)
     def __getattr__(self, name):
-        return self.__getitem__(name)
+        try:
+            return self.__getitem__(name)
+        except KeyError as error:
+            raise AttributeError(str(error))
 
     def __setattr__(self, name, value):
         return self.__setitem__(name, value)
