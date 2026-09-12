@@ -109,7 +109,7 @@ class TestAttributeDict:
         assert self.ad.test is self.ad["test"]
 
     def test_setdefault_nested(self):
-        self.ad.test = {"test": {"nested": 1}}
+        self.ad.setdefault("test", {"test": {"nested": 1}})
         assert self.ad.test.test.nested == 1
 
     def test_update(self):
