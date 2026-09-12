@@ -52,7 +52,7 @@ class AttributeDict(dict):
         return value
 
     def __copy__(self):
-        return self.__class__(copy.copy(dict(self)))
+        return self.copy()
 
     def __deepcopy__(self, memo=None):
         # deepcopying via a plain dict is a lot faster due to some
