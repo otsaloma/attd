@@ -24,13 +24,10 @@ publish:
 	python3 -m build
 	test -s dist/attd-*-py3-none-any.whl
 	test -s dist/attd-*.tar.gz
+	twine check dist/*
 	ls -l dist
 	@printf "Press Enter to upload or Ctrl+C to abort: "; read _
 	twine upload dist/*
-	sudo pip3 uninstall --break-system-packages -y attd || true
-	sudo pip3 uninstall --break-system-packages -y attd || true
-	sudo pip3 install   --break-system-packages -U attd
-	$(MAKE) test-installed
 
 # Interactive!
 release:
@@ -44,7 +41,7 @@ release:
 	tools/release
 
 test:
-	py.test .
+	pytest .
 
 test-installed:
 	cd && python3 -c "import attd; attd.AttributeDict()"
