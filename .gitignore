@@ -1,5 +1,3 @@
 .pytest_cache
 __pycache__
-attd.egg-info
-build
 dist
