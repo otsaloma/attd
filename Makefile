@@ -14,12 +14,12 @@ clean:
 	rm -rf */.pytest_cache
 
 install:
-	pip3 install --break-system-packages .
+	pip install --break-system-packages .
 
 # Interactive!
 publish:
 	$(MAKE) clean
-	python3 -m build
+	python -m build
 	test -s dist/attd-*-py3-none-any.whl
 	test -s dist/attd-*.tar.gz
 	twine check dist/*
@@ -42,6 +42,6 @@ test:
 	pytest .
 
 test-installed:
-	cd && python3 -c "import attd; attd.AttributeDict()"
+	cd && python -c "import attd; attd.AttributeDict()"
 
 .PHONY: check clean install publish release test test-installed
