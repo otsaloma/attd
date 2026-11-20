@@ -43,6 +43,23 @@ class TestAttributeDict:
         assert self.ad.test == 1
         assert self.ad.test is self.ad["test"]
 
+    def test___ior__(self):
+        self.ad |= {"test": {"nested": 1}}
+        assert self.ad.test.nested == 1
+
+    def test___or__(self):
+        test = self.ad | {"test": {"nested": 1}}
+        assert isinstance(test, AttributeDict)
+        assert test.test.nested == 1
+        assert "test" not in self.ad
+
+    def test___ror__(self):
+        self.ad.a = 1
+        test = {"a": 0, "test": {"nested": 1}} | self.ad
+        assert isinstance(test, AttributeDict)
+        assert test.test.nested == 1
+        assert test.a == 1
+
     def test___setattr__(self):
         self.ad.test = 1
         assert self.ad.test == 1

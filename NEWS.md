@@ -1,3 +1,7 @@
+# PENDING: attd 1.1
+
+- Add support for `|` and `|=` operators
+
 # 2023-11-07: attd 1.0
 
 - Migrate from `setup.py` to `hatch` and `pyproject.toml`

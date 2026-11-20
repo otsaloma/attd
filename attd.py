@@ -71,6 +71,24 @@ class AttributeDict(dict):
         except KeyError as error:
             raise AttributeError(str(error))
 
+    def __ior__(self, other):
+        self.update(other)
+        return self
+
+    def __or__(self, other):
+        if not isinstance(other, dict):
+            return NotImplemented
+        new = self.copy()
+        new.update(other)
+        return new
+
+    def __ror__(self, other):
+        if not isinstance(other, dict):
+            return NotImplemented
+        new = self.__class__(other)
+        new.update(self)
+        return new
+
     def __setattr__(self, name, value):
         return self.__setitem__(name, value)
 
