@@ -1,4 +1,4 @@
-# PENDING: attd 1.1
+# 2026-11-20: attd 1.1
 
 - Add support for `|` and `|=` operators
 
